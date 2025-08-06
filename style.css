@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: linear-gradient(0.25turn, #3f87a6, #68bbff, #006ba8);
+}
+
+.space {
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    margin-top: 5vh;
+    padding: 2vh;
+    box-shadow: 50px 50px 50px rgba(0, 0, 0, 0.1);
+}
+
+.btn-info {
+    width: 100%;
+}
+
+.row {
+    padding: 30px;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Dash</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+    <div class="row">
+        <div class="col align-self-center">
+            <div class="container space" align="center">
+                <figure>
+                    <img src="assets/cryptodashlogo2.png" alt="Crypto Dash Logo" style="width: 30vw;">
+                </figure>
+
+
+                <div class="col-md-8">
+                    <p><strong>Learn About Your Tokens</strong></p>
+                    <input type="text" class="form-control" placeholder="Search for a cryptocurrency...">
+                    <br>
+                    <button class="btn btn-info">Submit</button>
+                </div>
+                <br><br>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container space" style="height:100%;width:100%">
+                <p style="font-size: 2rem;"><strong>Solana</strong></p>
+
+                <div id="tradingview_sol"></div>
+                <div class="tradingview-widget-copyright">
+                    <a href="https://www.tradingview.com/symbols/CRYPTOCAP-SOL/" rel="noopener nofollow" target="_blank">
+                    </a>
+                </div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                    new TradingView.widget({
+                        "container_id": "tradingview_sol",
+                        "width": "100%",
+                        "height": 500,
+                        "symbol": "CRYPTOCAP:SOL",
+                        "interval": "D",
+                        "timezone": "Etc/UTC",
+                        "theme": "dark",
+                        "style": "1",
+                        "locale": "en",
+                        "hide_top_toolbar": false,
+                        "hide_side_toolbar": false,
+                        "allow_symbol_change": false,
+                        "backgroundColor": "#fff"
+                    });
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+
+        </div>
+    </div>
+
+
+
+
+    <div class="row align-items-center justify-content-center">
+        <div class="col-md-3 card">
+            <p>test</p>
+        </div>
+        <div class="col-md-3 card">
+            <p>test</p>
+
+        </div>
+        <div class="col-md-3 card">
+            <p>test</p>
+        </div>
+
+        <div class="col-md-3 card">
+            <p>test</p>
+        </div>
+        <div class="col-md-3 card">
+            <p>test</p>
+
+        </div>
+        <div class="col-md-3 card">
+            <p>test</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
