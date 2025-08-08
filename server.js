@@ -1,13 +1,13 @@
-// server.js
-
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-dotenv.config(); // Load env vars first
+dotenv.config();
 
-const cohere = require('cohere-ai'); // ✅ CORRECTED
+const { CohereClient } = require("cohere-ai");
 
-cohere.init(process.env.COHERE_API_KEY); // ✅ This will now work
+const cohere = new CohereClient({
+    token: process.env.COHERE_API_KEY
+});
 
 const app = express();
 const path = require('path');
@@ -28,7 +28,7 @@ app.post('/analyze', async(req, res) => {
             temperature: 0.9,
         });
 
-        const insight = response.body.generations[0].text.trim();
+        const insight = response.generations[0].text.trim();
         res.json({ insight });
     } catch (err) {
         console.error('Cohere error:', err);
