@@ -33,14 +33,13 @@ async function getTokenData() {
                 const coin = data.pairs[0];
                 console.log(coin);
                 tokenName.textContent = coin.baseToken.name || "N/A";
-                await get_AI_InvestScore(tokenName);
-                await get_AI_RiskScore(tokenName);
-                await get_AI_Buzz(tokenName);
+                await get_AI_InvestScore(coin.baseToken.name);
+                await get_AI_RiskScore(coin.baseToken.name);
+                await get_AI_Buzz(coin.baseToken.name);
                 tokenTitle.textContent = coin.baseToken.name;
                 tokenPrice.textContent = coin.priceUsd ? `$${parseFloat(coin.priceUsd).toFixed(4)}` : "N/A";
                 tokenCap.textContent = coin.liquidity.usd ? `$${parseFloat(coin.liquidity.usd).toLocaleString()}` : "N/A";
-                tokenRisk.textContent = coin.riskScore ? `${coin.riskScore}/10` : "N/A";
-                tokenBuzz.textContent = coin.socials && coin.socials.length > 0 ? coin.socials[0].followers.toLocaleString() : "N/A";
+
                 tokenLink.innerHTML = `<a href="https://dexscreener.com/${coin.chainId}/${coin.pairAddress}" target="_blank">View in DEXscreener</a>`;
                 chartFrame.src = `https://dexscreener.com/${coin.chainId}/${coin.pairAddress}`;
             } else {
@@ -61,7 +60,9 @@ async function get_AI_InvestScore(tokenName) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt: `Take on the role of a profitable memecoin trader with years of experience. Give an investment insight score out of 10 for the token ${tokenName}. Just return the number, based on the potential of the coin to moon.` }),
+            body: JSON.stringify({
+                prompt: `You are acting as a cryptocurrency analyst in a simulation. Based only on publicly available historical trends and reasoning, estimate a hypothetical AI Investment Score (0–10) for the token ${tokenName}. Consider factors like technology, adoption rate, developer activity, and past price performance. Do not give financial advice — this is for educational purposes only. Provide only the score and a one-sentence reason.`
+            }),
         });
 
         const result = await response.json();
@@ -83,7 +84,9 @@ async function get_AI_RiskScore(tokenName) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt: `Take on the role of a profitable memecoin trader with years of experience. Estimate the risk score for the token ${tokenName} on a scale of 1 to 10. Just return the number.` }),
+            body: JSON.stringify({
+                prompt: `You are acting as a risk analyst in a simulation. Based only on publicly available historical data and reasoning, estimate a hypothetical Risk Score (0–10) for the token ${tokenName}. Consider volatility, liquidity, market trends, and security incidents. Do not give financial advice — this is for educational purposes only. Provide only the score and a one-sentence reason.`
+            }),
         });
 
         const result = await response.json();
@@ -105,7 +108,12 @@ async function get_AI_Buzz(tokenName) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ prompt: `How popular is the token ${tokenName} in social media and online discussions? Give a buzz score out of 10.` }),
+            body: JSON.stringify({
+                prompt: `You are acting as a cryptocurrency social trend analyst in a simulation. 
+Based only on publicly available historical and online community data, classify the current social buzz level for the token ${tokenName} into one of three categories: "Low Buzz", "Moderate Buzz", or "High Buzz". 
+Consider online mentions, trending hashtags, news coverage, and crypto community engagement. 
+Do not give financial advice — this is for educational purposes only.`
+            }),
         });
 
         const result = await response.json();

@@ -1,0 +1,8 @@
+CryptoDash Is a small project to help new and old investors with their confidence when buying into a crypto currency. This project will allow users to input their token contract address then have some of the essential stats returned and displayed to them. And as a bonus we incorporated a AI implementation to help users recieve a numerical grade on their position of the token. That being said I was to use various different API's to make this project come to life.
+
+Tools used:
+- Tradingview: Using their trading platform and live chart preivew I was able to embed a real time price chart analysis of the Solana coin for users to see. 
+- DexScreener API: Using this api I was able to get the input token value and scan dex screener to retrieve vital coin information and also embed a chart preview of the page so users can scroll through the coin details through another interface. 
+-Cohere AI API: A free API resource to ask for AI insight on the coin and gain a score grade to return to the user. 
+
+There are no additional programs to install just to run the project on a local host or visit the url: then we can input the token and view the data. The project has not been altered much from users feedback as most users liked the original prototype idea and would like a working version to play with. 
