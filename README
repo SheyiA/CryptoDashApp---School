@@ -4,5 +4,6 @@ Tools used:
 - Tradingview: Using their trading platform and live chart preivew I was able to embed a real time price chart analysis of the Solana coin for users to see. 
 - DexScreener API: Using this api I was able to get the input token value and scan dex screener to retrieve vital coin information and also embed a chart preview of the page so users can scroll through the coin details through another interface. 
 -Cohere AI API: A free API resource to ask for AI insight on the coin and gain a score grade to return to the user. 
+-render server: using this I was able to host the page seamlessly and have the ai portion work constantly for anyone to use
 
-There are no additional programs to install just to run the project on a local host or visit the url: then we can input the token and view the data. The project has not been altered much from users feedback as most users liked the original prototype idea and would like a working version to play with. 
+There are no additional programs to install just to run the project on a local host or visit the url: https://cryptodashapp-school.onrender.com/ then we can input the token and view the data. The project has not been altered much from users feedback as most users liked the original prototype idea and would like a working version to play with. It is important to note that some of the AI features are glitchy and dont always return the score for every search but still provides a strong start and initial phase prototype. 
