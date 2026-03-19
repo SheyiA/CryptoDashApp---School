@@ -1,48 +1,51 @@
 // server.js
 // Import necessary modules
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
 dotenv.config();
 // Import Cohere AI client
 const { CohereClient } = require("cohere-ai");
 // Initialize Cohere AI client with API key
 const cohere = new CohereClient({
     // Use your Cohere API key from environment variables
-    token: process.env.COHERE_API_KEY
+    token: process.env.COHERE_API_KEY,
 });
 
 const app = express();
-const path = require('path');
+const path = require("path");
 const port = 3000;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.post('/analyze', async(req, res) => {
+app.post("/analyze", async(req, res) => {
     try {
-        // Extract the token name from the request body
         const { prompt } = req.body;
-        //  Use Cohere AI to generate insights based on the provided prompt
-        const response = await cohere.generate({
-            model: 'command',
-            prompt: prompt,
-            max_tokens: 50,
-            temperature: 0.9,
+
+        const response = await cohere.chat({
+            model: "command-r-plus",
+            message: prompt,
+            temperature: 0.7
         });
 
-        const insight = response.generations[0].text.trim();
+        let insight = "No insight returned";
+
+        if (response && response.text) {
+            insight = response.text.trim();
+        }
+
         res.json({ insight });
+
     } catch (err) {
-        console.error('Cohere error:', err);
-        res.status(500).json({ error: 'Cohere API request failed' });
+        console.error("Cohere analyze crash:", err);
+        res.status(500).json({ error: "Analyze failed" });
     }
 });
-app.get('/healthz', (req, res) => {
-    res.status(200).send('OK');
+app.get("/healthz", (req, res) => {
+    res.status(200).send("OK");
 });
-
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
